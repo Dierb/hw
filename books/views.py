@@ -1,5 +1,5 @@
 
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
 from . import models
 
@@ -11,4 +11,7 @@ def hello(request):
 def books_all(request):
     books = models.Book.objects.all()
     return render(request, 'book_list.html', {'books':books})
-    
+
+def books_detail(request, id):
+    book = get_object_or_404(models.Book, id = id)
+    return render(request, 'books_detail.html',{'book':book})
