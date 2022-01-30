@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Books</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css/' %}" />
+    <title>Add Books</title>
 </head>
 <body>
 <style>
-    .books__container{
+.books__container{
         max-width: 900px;
         margin-bottom: 40px;    
     }
@@ -41,29 +39,17 @@
             color: #fff;
             text-decoration: none;
           }
-         
 </style>
 
 <div class="container button__container">
     <a href="/books/" class="btn btn-primary">Books</a>
-    <a href="/add-book/" class="btn btn-primary">add book</a>
 </div>
 
-<div class="container books__container">
-    <div class="row gy-5">
-        {% for i in books %}
-        <div class="col-6">
-            <div class="card">
-                <img src="{{ i.image.url }}" class="card-img-top books__img" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">{{ i.title }}</h5>
-                  <p class="card-text">{{ i.description }}</p>
-                  <a href="/books/{{ i.id }}/" class="btn btn-primary">go detail</a>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</div>
+<form action="/add-book/" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Add Book" />
+
+</form>
 </body>
 </html>

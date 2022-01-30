@@ -7,11 +7,51 @@
     <title>book</title>
 </head>
 <body>
+<style>
+.books__container{
+        max-width: 900px;
+        margin-bottom: 40px;    
+    }
+
+    body {
+        background-image: linear-gradient( 109.6deg,  rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1% );
+    }
+    .books__img {
+        height: 300px;
+    }
+    
+    .btn-primary {background-image: linear-gradient(to right, #77A1D3 0%, #79CBCA  51%, #77A1D3  100%)}
+         .btn-primary {
+            margin: 10px;
+            padding: 15px 45px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            box-shadow: 0 0 20px #eee;
+            border-radius: 10px;
+            display: block;
+          }
+
+          .btn-primary:hover {
+            background-position: right center;
+            color: #fff;
+            text-decoration: none;
+          }
+</style>
+
+<div class="container button__container">
+    <a href="/books/" class="btn btn-primary">Books</a>
+</div>
 <div>
     <h2><a href="/books/{{ book.id }}/">{{ book.title }}</a></h2>
     <p> {{ book.description }} </p>
     <img src="{{ book.image.url }}" alt="">
-    <!-- <p> {{ book.date_filmed }} </p> -->
+</div>
+<div class="card-body body__button">
+    <button type="button" class="btn btn-primary"><a href="/books/{{ book.id }}/update/">Change</a></button>
+    <button type="button" class="btn btn-primary"><a href="/books/{{ book.id }}/delete/">Delete</a></button>
 </div> 
 </body>
 </html>
