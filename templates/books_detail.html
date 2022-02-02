@@ -45,13 +45,24 @@
     <a href="/books/" class="btn btn-primary">Books</a>
 </div>
 <div>
-    <h2><a href="/books/{{ book.id }}/">{{ book.title }}</a></h2>
-    <p> {{ book.description }} </p>
-    <img src="{{ book.image.url }}" alt="">
+    <h2><a href="/books/{{ object.id }}/">{{ object.title }}</a></h2>
+    <p> {{ object.description }} </p>
+    <img src="{{ object.image.url }}" alt="">
+</div>
+<div>
+    <h2>Comments</h2>
+    <ul>
+        {% for i in object.book_comment.all %}
+        <li>
+            <p>{{ i.text }}</p>
+            <p>{{ i.created_date }}</p>
+        </li>
+        {% endfor %}
+    </ul>
 </div>
 <div class="card-body body__button">
-    <button type="button" class="btn btn-primary"><a href="/books/{{ book.id }}/update/">Change</a></button>
-    <button type="button" class="btn btn-primary"><a href="/books/{{ book.id }}/delete/">Delete</a></button>
+    <button type="button" class="btn btn-primary"><a href="/books/{{ object.id }}/update/">Change</a></button>
+    <button type="button" class="btn btn-primary"><a href="/books/{{ object.id }}/delete/">Delete</a></button>
 </div> 
 </body>
 </html>
